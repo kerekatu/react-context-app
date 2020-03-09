@@ -1,5 +1,5 @@
-const path = require('path') // ES5 import syntax
-const WebpackBar = require('webpackbar')
+const path = require('path'); // ES5 import syntax
+const WebpackBar = require('webpackbar');
 
 module.exports = {
   entry: './src/app.js',
@@ -18,6 +18,10 @@ module.exports = {
       {
         use: ['style-loader', 'css-loader', 'sass-loader'],
         test: /\.scss$/
+      },
+      {
+        loader: 'file-loader',
+        test: /\.(gif|png|jpe?g|svg)$/i
       }
     ]
   },
@@ -30,4 +34,4 @@ module.exports = {
     open: true
   },
   plugins: [new WebpackBar()]
-}
+};

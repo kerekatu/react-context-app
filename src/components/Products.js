@@ -1,30 +1,35 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 // CONTEXT
-import { ProductContext } from '../context/ProductContext'
+import { ProductContext } from '../context/ProductContext';
 
 const Products = () => {
-  const { products, deleteProduct } = useContext(ProductContext)
+  const { products, deleteProduct } = useContext(ProductContext);
 
   const productList = products.length ? (
     products.map(product => (
-      <article key={product.ProductId}>
+      <article key={product.productId}>
         <h2>{product.productTitle}</h2>
         <p>
-          {product.productInfo.substring(0, 6)}...{' '}
-          <Link to={`/nyhed/${product.ProductId}`}>Læs mere</Link>
+          {product.productInfo.length > 6
+            ? `${product.productInfo.substring(0, 6)}...`
+            : product.productInfo}
+          {' -- '}
+          <Link to={`/product/${product.productId}`}>Læs mere</Link>
         </p>
-        <button onClick={() => deleteProduct(product.ProductId)}>
+        <p>{product.productPrice} DKK</p>
+        <img src={product.productImg} alt={`Product ${product.productId}`} />
+        <button onClick={() => deleteProduct(product.productId)}>
           Slet denne produkt
         </button>
       </article>
     ))
   ) : (
     <div>Der er ikke nogle produkter</div>
-  )
+  );
 
-  return <div className="products">{productList}</div>
-}
+  return <div>{productList}</div>;
+};
 
-export default Products
+export default Products;
