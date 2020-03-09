@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // 1px = 0.1rem
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-size: 1.6rem;
+  font-family: Tahoma, sans-serif;
+}
+
+#app {
+  max-width: 400px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+nav {
+  padding: 5px;
+
+  & ul {
+    padding: 0;
+  }
+
+  & ul li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+
+  &--active {
+    color: green;
+  }
+}
